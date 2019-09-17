@@ -16,8 +16,8 @@ defaults:
     path: ''
     type: steps
   values:
-    title: 
-    date: 2019-09-16 -0700
+    title:
+    date: 2019-09-16 +0900
 markdown: kramdown
 highlighter: rouge
 lsi: true
