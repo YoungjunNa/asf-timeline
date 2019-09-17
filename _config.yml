@@ -1,0 +1,27 @@
+---
+title: 아프리카돼지열병 타임라인
+timezone: Asia/Seoul
+collections:
+  posts:
+    title: Posts
+    output: true
+  steps:
+    title: Steps
+    output: false
+  uploads:
+    title: Uploads
+    output: true
+defaults:
+- scope:
+    path: ''
+    type: steps
+  values:
+    title: 
+    date: 2019-09-16 -0700
+markdown: kramdown
+highlighter: rouge
+lsi: true
+description: ASF TIMELINE
+baseurl: "/asf-timeline"
+url: http://youngjunna.github.io
+color: "#f7e8f6"
