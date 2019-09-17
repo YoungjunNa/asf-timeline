@@ -8,7 +8,7 @@ layout: default
     {% for step in steps %}
     <div class="item">
         <i class="vertical-line"></i>
-        <h2 class="item-date">{{ step.date | date: '%Y-%m-%d %R' }}{% if step.enddate %} - {{ step.enddate | date: '%m/%Y' }}{% endif %}</h2>
+        <h2 class="item-date">{{ step.date | date: '%Y-%m-%d' }}{% if step.enddate %} - {{ step.enddate | date: '%m/%Y' }}{% endif %}</h2>
         <div class="card-panel">
             <h3 class="card-title">
                 {{ step.title }}
