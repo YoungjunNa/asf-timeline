@@ -25,3 +25,4 @@ description: ASF TIMELINE
 baseurl: "/asf-timeline"
 url: http://youngjunna.github.io
 color: "#ffcece"
+favicon: /favicon_io/favicon-32x32.png
