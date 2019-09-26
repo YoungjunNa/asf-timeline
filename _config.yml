@@ -1,5 +1,5 @@
 ---
-title: 아프리카돼지열병 타임라인
+title: 아프리카 돼지열병 타임라인
 timezone: Asia/Seoul
 collections:
   posts:
@@ -24,5 +24,5 @@ lsi: true
 description: ASF TIMELINE
 baseurl: "/asf-timeline"
 url: http://youngjunna.github.io
-color: "#ffcece"
+color: "#ddb6c6"
 favicon: /favicon_io/favicon-32x32.png
