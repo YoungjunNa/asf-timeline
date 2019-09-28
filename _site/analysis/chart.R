@@ -39,7 +39,7 @@ df1 %>%
 
 # map ----
 hcmap("countries/kr/kr-all", showInLegend = FALSE) %>% 
-  hc_add_series(data = df, type = "mapbubble", name = "ASF 발생지역", maxSize = '5%', hcaes(color = "address")) %>% 
+  hc_add_series(data = filter(df, head != 0), type = "mapbubble", name = "ASF 발생지역", maxSize = '5%', hcaes(color = "address")) %>% 
   hc_mapNavigation(enabled = TRUE) %>%
   hc_add_theme(hc_theme_538()) 
 
@@ -47,9 +47,10 @@ hcmap("countries/kr/kr-all", showInLegend = FALSE) %>%
 
 # table ----
 df2 <- df %>%
-  select(no, address, head, area, sum, sum_acc, farm, farm_acc, x)
+  filter(head != 0) %>%
+  select(no, date, address, head, area, sum, sum_acc, farm, farm_acc, x)
 
-colnames(df2) <- c("No", "확정일자", "살처분두수", "예방적살처분두수", "살처분두수합계", "누적살처분두수", "살처분농가수", "누적살처분농가수", "비고")
+colnames(df2) <- c("No", "일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
 
 
 library(DT)
@@ -69,14 +70,14 @@ datatable(
     buttons = c("copy", "excel", "print")
   )
 ) %>%
-  formatStyle("살처분농가수",
-              background = styleColorBar(c(0, max(df2$살처분농가수, na.rm = TRUE)), "lightblue"),
+  formatStyle("안락사농가수",
+              background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "lightblue"),
               backgroundSize = "98% 88%",
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"
   ) %>%
-  formatStyle("살처분두수",
-              background = styleColorBar(c(0, max(df2$살처분두수, na.rm = TRUE)), "pink"),
+  formatStyle("안락사두수",
+              background = styleColorBar(c(0, max(df2$안락사두수, na.rm = TRUE)), "pink"),
               backgroundSize = "98% 88%",
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"

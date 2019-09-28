@@ -39,7 +39,7 @@ df1 %>%
 
 # map ----
 hcmap("countries/kr/kr-all", showInLegend = FALSE) %>% 
-  hc_add_series(data = df, type = "mapbubble", name = "ASF 발생지역", maxSize = '5%', hcaes(color = "address")) %>% 
+  hc_add_series(data = filter(df, head != 0), type = "mapbubble", name = "ASF 발생지역", maxSize = '5%', hcaes(color = "address")) %>% 
   hc_mapNavigation(enabled = TRUE) %>%
   hc_add_theme(hc_theme_538()) 
 
@@ -47,6 +47,7 @@ hcmap("countries/kr/kr-all", showInLegend = FALSE) %>%
 
 # table ----
 df2 <- df %>%
+  filter(head != 0) %>%
   select(no, date, address, head, area, sum, sum_acc, farm, farm_acc, x)
 
 colnames(df2) <- c("No", "일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
