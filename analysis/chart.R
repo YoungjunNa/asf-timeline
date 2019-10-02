@@ -12,29 +12,29 @@ df1 <- df %>%
 # line ----
 df1 %>%
   select("date", "head_acc", "area_acc", "sum_acc") %>%
-  rename("발생농가"= "head_acc", "예방적살처분" = "area_acc", "합계"= "sum_acc") %>%
-  gather("발생농가", "예방적살처분", "합계", key = "type", value = "head") %>%
+  rename("발생농가"= "head_acc", "예방적안락사" = "area_acc", "합계"= "sum_acc") %>%
+  gather("발생농가", "예방적안락사", "합계", key = "type", value = "head") %>%
   hchart(type = "line", hcaes(x = date, y = head, group = type)) %>%
-  hc_title(text = "일자별 살처분 대상두수(누적)") %>%
+  hc_title(text = "일자별 안락사 대상두수(누적)") %>%
   hc_add_theme(hc_theme_darkunica())
 
 df1 %>%
   hchart(type = "line", hcaes(x = date, y = farm_acc), color = "red") %>%
-  hc_title(text = "일자별 살처분 대상농가수(누적)") %>%
+  hc_title(text = "일자별 안락사 대상농가수(누적)") %>%
   hc_add_theme(hc_theme_darkunica()) 
 
 # column ----
 df1 %>%
-  rename("발생농가" = "head", "예방적살처분" = area) %>%
-  gather("발생농가", "예방적살처분", key = "type", value = "head") %>%
+  rename("발생농가" = "head", "예방적안락사" = area) %>%
+  gather("발생농가", "예방적안락사", key = "type", value = "head") %>%
   hchart(type = "column", hcaes(x = date, y = head, group = type)) %>%
   hc_plotOptions(column = list(stacking = "normal")) %>%
-  hc_title(text = "일자별 살처분 대상두수") %>%
+  hc_title(text = "일자별 안락사 대상두수") %>%
   hc_add_theme(hc_theme_darkunica()) 
 
 df1 %>%
   hchart(type = "column", hcaes(x = date, y = farm)) %>%
-  hc_title(text = "일자별 살처분 대상농가수") %>%
+  hc_title(text = "일자별 안락사 대상농가수") %>%
   hc_add_theme(hc_theme_darkunica()) 
 
 # map ----
@@ -48,9 +48,9 @@ hcmap("countries/kr/kr-all", showInLegend = FALSE) %>%
 # table ----
 df2 <- df %>%
   filter(head != 0) %>%
-  select(no, date, address, head, area, sum, sum_acc, farm, farm_acc, x)
+  select(date, address, head, area, sum, sum_acc, farm, farm_acc, x)
 
-colnames(df2) <- c("No", "일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
+colnames(df2) <- c("일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
 
 
 library(DT)
@@ -70,14 +70,26 @@ datatable(
     buttons = c("copy", "excel", "print")
   )
 ) %>%
-  formatStyle("안락사농가수",
-              background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "lightblue"),
+  formatStyle("안락사두수",
+              background = styleColorBar(c(0, max(df2$안락사두수, na.rm = TRUE)), "#eb7070"),
               backgroundSize = "98% 88%",
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"
   ) %>%
-  formatStyle("안락사두수",
-              background = styleColorBar(c(0, max(df2$안락사두수, na.rm = TRUE)), "pink"),
+  formatStyle("예방적안락사두수",
+              background = styleColorBar(c(0, max(df2$예방적안락사두수, na.rm = TRUE)), "#fec771"),
+              backgroundSize = "98% 88%",
+              backgroundRepeat = "no-repeat",
+              backgroundPosition = "center"
+  ) %>%
+  formatStyle("안락사두수합계",
+              background = styleColorBar(c(0, max(df2$안락사두수합계, na.rm = TRUE)), "#e6e56c"),
+              backgroundSize = "98% 88%",
+              backgroundRepeat = "no-repeat",
+              backgroundPosition = "center"
+  ) %>%
+  formatStyle("안락사농가수",
+              background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "#64e291"),
               backgroundSize = "98% 88%",
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"
