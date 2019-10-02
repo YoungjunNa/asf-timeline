@@ -60,10 +60,12 @@ datatable(
   extensions = c("Scroller", "Buttons"),
   options = list(
     autoWidth = TRUE,
-    # columnDefs = list(list(targets = "_all", className = "dt-center")),
+    columnDefs = list(
+      list(width = "170px", targets = "_all", className = "dt-center") 
+    ),
     # pageLength = 100,
     lengthMenu = c(15, 25, 50, 100, 500),
-    # deferRender = TRUE,
+    deferRender = TRUE,
     # scrollX = TRUE,
     # scrollY = 800,
     dom = "Blfrtip",
@@ -88,9 +90,22 @@ datatable(
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"
   ) %>%
+  formatStyle("누적안락사두수",
+              background = styleColorBar(c(0, max(df2$누적안락사두수, na.rm = TRUE)), "#7f78d2"),
+              backgroundSize = "98% 88%",
+              backgroundRepeat = "no-repeat",
+              backgroundPosition = "center"
+  ) %>%
   formatStyle("안락사농가수",
               background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "#64e291"),
               backgroundSize = "98% 88%",
               backgroundRepeat = "no-repeat",
               backgroundPosition = "center"
+  ) %>%
+  formatStyle("누적안락사농가수",
+                 background = styleColorBar(c(0, max(df2$누적안락사농가수, na.rm = TRUE)), "pink"),
+                 backgroundSize = "98% 88%",
+                 backgroundRepeat = "no-repeat",
+                 backgroundPosition = "center"
   )
+
