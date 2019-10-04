@@ -50,62 +50,77 @@ df2 <- df %>%
   filter(head != 0) %>%
   select(date, address, head, area, sum, sum_acc, farm, farm_acc, x)
 
-colnames(df2) <- c("일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
+colnames(df2) <- c("일자", "위치", "해당농장두수", "예방적두수", "안락사합계", "누적안락사두수", "농가수", "누적농가수", "비고")
 
+df2$No <- 1:nrow(df2)
+df2 <- select(df2, No, everything())
 
-library(DT)
-datatable(
+library(formattable)
+formattable(
   df2,
-  rownames = FALSE,
-  extensions = c("Scroller", "Buttons"),
-  options = list(
-    autoWidth = TRUE,
-    columnDefs = list(
-      list(width = "170px", targets = "_all", className = "dt-center") 
-    ),
-    # pageLength = 100,
-    lengthMenu = c(15, 25, 50, 100, 500),
-    deferRender = TRUE,
-    # scrollX = TRUE,
-    # scrollY = 800,
-    dom = "Blfrtip",
-    buttons = c("copy", "excel", "print")
+  list(
+    area(col = c(해당농장두수)) ~ normalize_bar("#eb7070", 0.2),
+    area(col = c(예방적두수)) ~ normalize_bar("#fec771", 0.2),
+    area(col = c(안락사합계)) ~ normalize_bar("#e6e56c", 0.2),
+    area(col = c(누적안락사두수)) ~ normalize_bar("#7f78d2", 0.2),
+    area(col = c(농가수)) ~ normalize_bar("#64e291", 0.2),
+    area(col = c(누적농가수)) ~ normalize_bar("pink", 0.2)
   )
-) %>%
-  formatStyle("안락사두수",
-              background = styleColorBar(c(0, max(df2$안락사두수, na.rm = TRUE)), "#eb7070"),
-              backgroundSize = "98% 88%",
-              backgroundRepeat = "no-repeat",
-              backgroundPosition = "center"
-  ) %>%
-  formatStyle("예방적안락사두수",
-              background = styleColorBar(c(0, max(df2$예방적안락사두수, na.rm = TRUE)), "#fec771"),
-              backgroundSize = "98% 88%",
-              backgroundRepeat = "no-repeat",
-              backgroundPosition = "center"
-  ) %>%
-  formatStyle("안락사두수합계",
-              background = styleColorBar(c(0, max(df2$안락사두수합계, na.rm = TRUE)), "#e6e56c"),
-              backgroundSize = "98% 88%",
-              backgroundRepeat = "no-repeat",
-              backgroundPosition = "center"
-  ) %>%
-  formatStyle("누적안락사두수",
-              background = styleColorBar(c(0, max(df2$누적안락사두수, na.rm = TRUE)), "#7f78d2"),
-              backgroundSize = "98% 88%",
-              backgroundRepeat = "no-repeat",
-              backgroundPosition = "center"
-  ) %>%
-  formatStyle("안락사농가수",
-              background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "#64e291"),
-              backgroundSize = "98% 88%",
-              backgroundRepeat = "no-repeat",
-              backgroundPosition = "center"
-  ) %>%
-  formatStyle("누적안락사농가수",
-                 background = styleColorBar(c(0, max(df2$누적안락사농가수, na.rm = TRUE)), "pink"),
-                 backgroundSize = "98% 88%",
-                 backgroundRepeat = "no-repeat",
-                 backgroundPosition = "center"
-  )
+)
 
+# library(DT)
+# datatable(
+#   df2,
+#   rownames = FALSE,
+#   extensions = c("Scroller", "Buttons"),
+#   options = list(
+#     autoWidth = TRUE,
+#     columnDefs = list(
+#       list(width = "170px", targets = "_all", className = "dt-center") 
+#     ),
+#     # pageLength = 100,
+#     lengthMenu = c(15, 25, 50, 100, 500),
+#     deferRender = TRUE,
+#     # scrollX = TRUE,
+#     # scrollY = 800,
+#     dom = "Blfrtip",
+#     buttons = c("copy", "excel", "print")
+#   )
+# ) %>%
+#   formatStyle("안락사두수",
+#               background = styleColorBar(c(0, max(df2$안락사두수, na.rm = TRUE)), "#eb7070"),
+#               backgroundSize = "98% 88%",
+#               backgroundRepeat = "no-repeat",
+#               backgroundPosition = "center"
+#   ) %>%
+#   formatStyle("예방적안락사두수",
+#               background = styleColorBar(c(0, max(df2$예방적안락사두수, na.rm = TRUE)), "#fec771"),
+#               backgroundSize = "98% 88%",
+#               backgroundRepeat = "no-repeat",
+#               backgroundPosition = "center"
+#   ) %>%
+#   formatStyle("안락사두수합계",
+#               background = styleColorBar(c(0, max(df2$안락사두수합계, na.rm = TRUE)), "#e6e56c"),
+#               backgroundSize = "98% 88%",
+#               backgroundRepeat = "no-repeat",
+#               backgroundPosition = "center"
+#   ) %>%
+#   formatStyle("누적안락사두수",
+#               background = styleColorBar(c(0, max(df2$누적안락사두수, na.rm = TRUE)), "#7f78d2"),
+#               backgroundSize = "98% 88%",
+#               backgroundRepeat = "no-repeat",
+#               backgroundPosition = "center"
+#   ) %>%
+#   formatStyle("안락사농가수",
+#               background = styleColorBar(c(0, max(df2$안락사농가수, na.rm = TRUE)), "#64e291"),
+#               backgroundSize = "98% 88%",
+#               backgroundRepeat = "no-repeat",
+#               backgroundPosition = "center"
+#   ) %>%
+#   formatStyle("누적안락사농가수",
+#                  background = styleColorBar(c(0, max(df2$누적안락사농가수, na.rm = TRUE)), "pink"),
+#                  backgroundSize = "98% 88%",
+#                  backgroundRepeat = "no-repeat",
+#                  backgroundPosition = "center"
+#   )
+# 
