@@ -52,6 +52,18 @@ df2 <- df %>%
 
 colnames(df2) <- c("일자", "위치", "안락사두수", "예방적안락사두수", "안락사두수합계", "누적안락사두수", "안락사농가수", "누적안락사농가수", "비고")
 
+library(formattable)
+formattable(
+  df2,
+  list(
+    area(col = c(안락사두수)) ~ normalize_bar("#eb7070", 0.2),
+    area(col = c(예방적안락사두수)) ~ normalize_bar("#fec771", 0.2),
+    area(col = c(안락사두수합계)) ~ normalize_bar("#e6e56c", 0.2),
+    area(col = c(누적안락사두수)) ~ normalize_bar("#7f78d2", 0.2),
+    area(col = c(안락사농가수)) ~ normalize_bar("#64e291", 0.2),
+    area(col = c(누적안락사농가수)) ~ normalize_bar("pink", 0.2)
+  )
+)
 
 library(DT)
 datatable(
