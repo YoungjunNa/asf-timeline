@@ -11,8 +11,11 @@
 - Github Issue: https://github.com/YoungjunNa/asf-timeline/issues
 - Animal data lab: http://adatalab.net/
 
+## Contributors
+- https://github.com/YoungjunNa/asf-timeline/graphs/contributors
+
 ## 주요 참고자료
-1. 농림축산식품부 보도자료 [#](http://www.mafra.go.kr/FMD-AI/2095/subview.do)
-2. 돼지와 사람 [#](http://www.pigpeople.net/news/article.html?no=7260)
-3. 네이버 뉴스검색 [#](https://search.naver.com/search.naver?where=news&query=%EC%95%84%ED%94%84%EB%A6%AC%EC%B9%B4%20%EB%8F%BC%EC%A7%80%EC%97%B4%EB%B3%91&sm=tab_srt&sort=1&photo=0&field=0&reporter_article=&pd=0&ds=&de=&docid=&nso=so%3Add%2Cp%3Aall%2Ca%3Aall&mynews=0&refresh_start=0&related=0)
-4. OIE Reports on ASF [#](https://www.oie.int/en/animal-health-in-the-world/animal-diseases/african-swine-fever/)
+- 농림축산식품부 보도자료 [#](http://www.mafra.go.kr/FMD-AI/2095/subview.do)
+- 돼지와 사람 [#](http://www.pigpeople.net/news/article.html?no=7260)
+- 네이버 뉴스검색 [#](https://search.naver.com/search.naver?where=news&query=%EC%95%84%ED%94%84%EB%A6%AC%EC%B9%B4%20%EB%8F%BC%EC%A7%80%EC%97%B4%EB%B3%91&sm=tab_srt&sort=1&photo=0&field=0&reporter_article=&pd=0&ds=&de=&docid=&nso=so%3Add%2Cp%3Aall%2Ca%3Aall&mynews=0&refresh_start=0&related=0)
+- OIE Reports on ASF [#](https://www.oie.int/en/animal-health-in-the-world/animal-diseases/african-swine-fever/)
