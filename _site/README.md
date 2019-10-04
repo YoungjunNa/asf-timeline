@@ -7,12 +7,11 @@
 농림축산식품부에서 지속적으로 브리핑을 해 주고 있지만 정확한 사육규모와 예방적 안락사 농가수/두수에 대해서는 일부 데이터를 수집하는 과정 가운데 오류가 있을 수 있습니다. 개선사항이나 수정요청 사항은 [Github Issue](https://github.com/YoungjunNa/asf-timeline/issues)에 등록해주시거나 email로 문의하시면 적극 반영하도록 하겠습니다.
 
 ## Contacts
-- email: ruminoreticulum@gmail.com
+- Email: ruminoreticulum@gmail.com
 - Github Issue: https://github.com/YoungjunNa/asf-timeline/issues
 - Animal data lab: http://adatalab.net/
 
 ## 주요 참고자료
-
 1. 농림축산식품부 보도자료 [#](http://www.mafra.go.kr/FMD-AI/2095/subview.do)
 2. 돼지와 사람 [#](http://www.pigpeople.net/news/article.html?no=7260)
 3. 네이버 뉴스검색 [#](https://search.naver.com/search.naver?where=news&query=%EC%95%84%ED%94%84%EB%A6%AC%EC%B9%B4%20%EB%8F%BC%EC%A7%80%EC%97%B4%EB%B3%91&sm=tab_srt&sort=1&photo=0&field=0&reporter_article=&pd=0&ds=&de=&docid=&nso=so%3Add%2Cp%3Aall%2Ca%3Aall&mynews=0&refresh_start=0&related=0)
