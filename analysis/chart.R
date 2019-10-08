@@ -73,6 +73,16 @@ colnames(df2) <- c("일자", "위치", "해당농장두수", "예방적두수", 
 df2$No <- 1:nrow(df2)
 df2 <- select(df2, No, everything())
 
+library(timevis)
+
+df2 %>%
+  select(일자, 위치) %>%
+  rename(start = "일자", content = "위치") %>%
+  timevis()
+
+
+
+
 library(formattable)
 formattable(
   df2,
