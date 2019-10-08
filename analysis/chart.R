@@ -63,7 +63,7 @@ hcmap("countries/kr/kr-all", showInLegend = FALSE) %>%
 
 
 
-# table ----
+# df2 ----
 df2 <- df %>%
   filter(head != 0) %>%
   select(date, address, head, area, sum, sum_acc, farm, farm_acc, x)
@@ -73,15 +73,26 @@ colnames(df2) <- c("일자", "위치", "해당농장두수", "예방적두수", 
 df2$No <- 1:nrow(df2)
 df2 <- select(df2, No, everything())
 
+## timevis ----
+
 library(timevis)
 
-df2 %>%
-  select(일자, 위치) %>%
-  rename(start = "일자", content = "위치") %>%
-  timevis()
+tv <- df %>%
+  filter(head != 0) %>%
+  select(date, address, city) %>%
+  rename(start = "date", content = "address", id = "city") %>%
+  mutate(group = id) %>%
+  mutate(type = "point") %>%
+  mutate(id = 1:13)
 
+tv_groups <- data.frame(
+  id = c("파주시", "인천광역시", "연천군", "김포시"),
+  content = c("파주시", "인천광역시", "연천군", "김포시")
+)
 
+timevis(data = tv, groups = tv_groups, height = "400px", width = "100%")
 
+## table ----
 
 library(formattable)
 formattable(
