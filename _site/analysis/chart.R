@@ -9,6 +9,24 @@ df1 <- df %>%
   summarise(head = sum(head), area = sum(area), farm = sum(farm)) %>%
   mutate(sum = head + area, head_acc = cumsum(head), area_acc = cumsum(area), sum_acc = cumsum(sum), farm_acc = cumsum(farm))
 
+df3 <- df %>%
+  group_by(city) %>%
+  summarise(sum_head = sum(sum), sum_farm = sum(farm))
+
+library(treemap)
+tm <- treemap(df3,
+              index = c("city"),
+              vSize = "sum_head", vColor = "sum_farm",
+              type = "value", palette = c("#b18ea6", "#b2e4d5", "#f2a6a6", "#e7f3ee"),
+              mapping = c(min(df3$sum_farm), max(df3$sum_farm))
+)
+
+hctreemap(tm)
+
+df3 %>%
+  filter(sum_head != 0) %>%
+  hchart("treemap", hcaes(x = city, value = sum_head), colors = c("#b2e4d5", "#f2a6a6", "#b18ea6", "#e7f3ee"))
+
 # line ----
 df1 %>%
   select("date", "head_acc", "area_acc", "sum_acc") %>%
@@ -54,6 +72,16 @@ colnames(df2) <- c("일자", "위치", "해당농장두수", "예방적두수", 
 
 df2$No <- 1:nrow(df2)
 df2 <- select(df2, No, everything())
+
+library(timevis)
+
+df2 %>%
+  select(일자, 위치) %>%
+  rename(start = "일자", content = "위치") %>%
+  timevis()
+
+
+
 
 library(formattable)
 formattable(
