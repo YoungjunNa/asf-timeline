@@ -23,10 +23,6 @@ tm <- treemap(df3,
 
 hctreemap(tm)
 
-df3 %>%
-  filter(sum_head != 0) %>%
-  hchart("treemap", hcaes(x = city, value = sum_head), colors = c("#b2e4d5", "#f2a6a6", "#b18ea6", "#e7f3ee"))
-
 # line ----
 df1 %>%
   select("date", "head_acc", "area_acc", "sum_acc") %>%
@@ -83,14 +79,14 @@ tv <- df %>%
   rename(start = "date", content = "address", id = "city") %>%
   mutate(group = id) %>%
   mutate(type = "point") %>%
-  mutate(id = 1:13)
+  mutate(id = 1:nrow(df2))
 
 tv_groups <- data.frame(
   id = c("파주시", "인천광역시", "연천군", "김포시"),
   content = c("파주시", "인천광역시", "연천군", "김포시")
 )
 
-timevis(data = tv, groups = tv_groups, height = "400px", width = "100%")
+timevis(data = tv, groups = tv_groups, height = "480px", width = "100%")
 
 ## table ----
 
