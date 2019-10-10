@@ -10,7 +10,8 @@ df1 <- df %>% filter(journal != 0)
 lm.model <- augment(lm(journal ~ date, data = df1))
 
 lm.model %>%
-  hchart(type = "line", hcaes(x = date, y = journal)) %>%
+  hchart(type = "line", hcaes(x = date, y = journal), name = "ASF 기사수") %>%
   hc_title(text = "일자별 언론관심도(네이버 기사수)") %>%
   hc_add_series(lm.model, "line", hcaes(x = date, y = .fitted)) %>%
+  hc_add_series(df1, "line", hcaes(x = date, y = joguk), name = "조국 기사수") %>%
   hc_add_theme(hc_theme_darkunica())
