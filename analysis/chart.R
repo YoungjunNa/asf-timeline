@@ -74,8 +74,13 @@ df2 <- select(df2, No, everything())
 library(timevis)
 
 tv <- df %>%
-  filter(head != 0) %>%
-  select(date, address, city) %>%
+  filter(head != 0)
+  
+tv$No <- 1:nrow(tv)
+tv <- select(tv, No, date, address, city) %>%
+  mutate(address = paste0(No, ". ", address))
+
+tv <- tv %>%
   rename(start = "date", content = "address", id = "city") %>%
   mutate(group = id) %>%
   mutate(type = "point") %>%
