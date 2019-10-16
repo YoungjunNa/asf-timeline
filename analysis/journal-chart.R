@@ -19,7 +19,7 @@ lm.model %>%
 
 ## 빅카인드 데이터 ----
 
-big <- readxl::read_excel("NewsResult_20190916-20191010.xlsx")
+big <- readxl::read_excel("NewsResult_20190916-20191016.xlsx")
 
 big$일자 <- lubridate::ymd(big$일자)
 
@@ -28,4 +28,5 @@ big %>%
   summarise(n = n()) %>%
   arrange(desc(n)) %>%
   hchart("column", hcaes(언론사, n)) %>%
-  hc_title(text = "언론사별 기사수(190917-1010)")
+  hc_title(text = "언론사별 기사수(190917-1010)") %>%
+  hc_add_theme(hc_theme_darkunica())
